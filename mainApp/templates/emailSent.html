@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/emailSent.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="reset-container">
+        <div class="correct">
+            <span class="r1"></span>
+            <span class="l1"></span>
+        </div>
+        <p>Check out your email we have sent you a link where you can reset your password.</p>
+    </div>
+{% endblock %}

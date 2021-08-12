@@ -1,0 +1,31 @@
+<nav class="navbar navbar-dark bg-dark" style="position: sticky;">
+  <a class="navbar-brand" href="{% url 'home' %}" >Stalker Rat</a>
+  <div class="nav-right">
+    <form class="form-inline" action="{% url 'search' %}" method='POST'>
+      {% csrf_token %}
+        <div class="d-flex">
+            <input class="form-control mr-sm-2 search-box" type="search" placeholder="User Name" aria-label="Search" name="search_word">
+            <button class="btn btn-outline-light my-2 my-sm-0 search-btn" type="submit" >Search</button>
+        </div>
+    </form>
+    <button class="btn btn-outline-light my-2 my-sm-0 search-btn" type="submit" id='second-search-btn'>Search</button>
+    {% if request.user.is_authenticated %}
+      <div id='profile-pic-btn'>
+        <button>
+          {% if request.user.Profile.profilePic %}
+          <img src="{{request.user.Profile.profilePic.url}}">
+          {% endif %}
+        </button>
+      </div>
+      <div id="myDropdown" class="dropdown-content">
+        <a href="{% url 'updateProfile' %}">Update Profile</a>
+        <a href="{% url 'logout' %}" >Log out</a>
+      </div>
+      <!-- <a href= class="btn btn-outline-info register-btn"  ></a> -->
+      <!-- <a href=class="btn btn-outline-danger logout-btn"  ></a> -->
+    {% else %}
+      <a href="{% url 'login' %}" class="btn btn-outline-info register-btn " role="button" aria-pressed="true" >Log In</a>
+      <a href="{% url 'signUp' %}" class="btn btn-primary register-btn" role="button" aria-pressed="true">Sign Up</a>
+    {% endif %}
+  </div>
+</nav>

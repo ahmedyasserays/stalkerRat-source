@@ -1,0 +1,18 @@
+*{box-sizing: border-box;}
+body{background-color:#000;color:#ccc}
+.reset-container{
+    width:40%;
+    margin:65px auto;
+    background-color: rgba(255, 0, 0, 0.229);
+    padding: 20px 20px 20px 70px;
+    border-radius:20px;
+    border:2px solid red
+}
+.reset-container .correct{position: relative;top: 25px;right: 40px;}
+.reset-container .correct .l1,
+.reset-container .correct .r1
+{height: 3px;width: 22px;background-color: red;position: absolute;}
+.reset-container .correct .r1{transform: rotateZ(135deg);}
+.reset-container .correct .l1{transform: rotateZ(45deg);}
+@media(max-width:700px){.reset-container{width:70%;}}
+@media(max-width:400px){.reset-container{width:80%;padding: 15px 15px 15px 55px;}}

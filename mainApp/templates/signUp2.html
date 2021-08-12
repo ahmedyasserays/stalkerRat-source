@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/signUP2.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="main-box">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-container">
+                {{form.first_name}}
+                {{form.last_name}}
+                {{form.username}}
+                {{form.username.errors}}
+                {{form.email}}
+                {{form.password1}}
+                {{form.password2}}
+                {{form.password1.errors}}
+                {{form.password2.errors}}
+                <input type="submit" name="sign-up" id="supmit-input" value="Sign up">
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+<script>
+    document.getElementById("usernameone").required = true;
+    document.getElementById("usernamelast").required = true;
+    document.getElementById("email").required = true;
+</script>
+{% endblock %}

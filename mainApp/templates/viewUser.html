@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/viewUser.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="open-img">
+        <div class="overlay-img">
+            <img src="{{user.profilePic.url}}" alt="">
+        </div>
+    </div>
+    <div class="info">
+        <div class="background">
+            <div class="wrapper">
+                <ul class="bg-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="prof-img">
+            <img src="{{user.profilePic.url}}" alt="">
+        </div>
+    </div>
+    <div class="name-text">
+        <h1>
+            {{user}}
+        </h1>
+        <div class="num-m">
+            <span>{{user.message_set.count}} </span> {% if user.message_set.count == 1 %}Message{% else %} Messages{% endif %}
+        </div>
+        {% for message in messages %}
+        <p style="color: #00ff00;">{{message}}</p>
+        {% endfor %}
+        <form action="" method="POST" >
+            {% csrf_token %}
+            {{formset.management_form}}
+            {% for form in formset %}
+            {{form.content}}
+            {% endfor %}
+            <!-- <textarea name="" id="id_message_set-0-content"></textarea> -->
+            <input type="submit" value="Send" class="send-massege">
+        </form>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/viewUser.js' %}"></script>
+<Script>
+    document.getElementById("id_message_set-0-content").setAttribute("placeholder", "Be honest NOT mean !! 🙄");
+    document.getElementById("id_message_set-0-content").setAttribute("dir", "auto");
+</Script>
+{% endblock %}

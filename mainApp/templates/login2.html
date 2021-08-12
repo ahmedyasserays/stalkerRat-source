@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/login2.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="log-heading">
+        <div class="main-log">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="inputs-container">
+                    <input type="name" id="log-email" placeholder="Uername" name="your_name">
+                    <input type="password" id="log-password" placeholder="Password" name="your_pass">
+                    <input type="submit" id="log-in" value="Log in">
+                    <a href="{% url 'password_reset' %}">Forgot your password?</a>
+                </div>
+            </form>
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="false">{{message}}</div>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="false true">{{message}}</div>
+            {% else %}
+            <p>{{message}}</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

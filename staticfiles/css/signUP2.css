@@ -1,0 +1,133 @@
+* {box-sizing: border-box;transition: 1s;}
+:root {--main--color: #11c3c1;}
+::placeholder {color:var(--main--color);opacity: 0.5;}
+:-ms-input-placeholder {color: var(--main--color);opacity: 0.5;}
+::-ms-input-placeholder {color: var(--main--color);opacity: 0.5;}
+
+body {
+    /* background: linear-gradient(#000,var(--main--color)); */
+    background-color: #000;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 33px #000 inset !important;
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: #fff !important;
+}
+a{text-decoration: none;}
+
+.main-box {
+    width: 60%;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 100px;
+    padding:17px;
+    box-shadow: 0px 0px 10px 0px var(--main--color);
+}
+
+.main-box .form-container input,
+#text-area {
+    height: 35px;
+    width: 200px;
+    display: block;
+    border-bottom: 2px solid #11c3c080;
+    border-left: 2px solid #11c3c080;
+    border-right: none;
+    border-top: none;
+    margin: 10px 0;
+    color: #fff;
+    background-color: #000;
+    outline: none;
+    padding-left: 10px;
+    transition: 0.2s;
+    border-radius: 20px;
+    /* border-top-left-radius: 20px; */
+}
+
+.main-box .form-container input:hover , #text-area:hover{
+    border-color: var(--main--color);
+    border: 2px solid var(--main--color);
+}
+.main-box .form-container input:focus , #text-area:focus{
+    border: 2px solid var(--main--color);
+}
+
+#usernameone {
+    display: inline;
+    width: 47%;
+}
+
+#usernamelast {
+    display: inline;
+    width: 47%;
+    float:right;
+}
+#usernameone , #usernamelasrt{
+    margin-bottom: 0;
+}
+
+#password,
+#email,
+#repeat-password,
+#username {
+    width: 100%;
+}
+
+#text-area {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    padding: 10px;
+}
+
+#supmit-input {
+    margin: auto;
+    background-color: var(--main--color);
+    color: #000;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor:pointer;
+}
+#supmit-input:hover{
+    background-color: #17f0ec;
+}
+@media(max-width:640px){
+    .sign-heading {
+        width: 100%;
+    }
+}
+@media(max-width:500px){
+    .main-box {
+        width:90%
+    }
+    .logo-container img {
+        width:15%;
+        margin:0;
+    }
+    .logo-container h1 {
+        font-size:25px;
+        bottom:20px
+    }
+    #supmit-input{
+        width:70%;
+    }
+    ::placeholder {font-size: 12px;}
+    :-ms-input-placeholder {color: var(--main--color);opacity: 0.5;}
+    ::-ms-input-placeholder {color: var(--main--color);opacity: 0.5;}
+}
+
+.errorlist{
+    color: #f00;
+    list-style-type: none;
+    text-align:left;
+    padding-left:10px;
+    padding-right: 20px;
+}

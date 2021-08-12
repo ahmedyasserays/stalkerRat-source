@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    {% for message in userMessags %}
+    <p>{{message.content}}</p>
+    <hr>
+    {% endfor %}
+</center>
+{% endblock %}

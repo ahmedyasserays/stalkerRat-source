@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+	.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+    .row{width: 100%}
+   
+</style>
+
+<br>
+<div class="row">
+	<div class="col-md-3">
+		<div class="card card-body">
+			<a class="btn btn-secondary" href="{% url 'home' %}"> &#8592; Back to Profile</a>
+			<hr>
+			<h3 style="text-align: center">Account Settings</h3>
+			<hr>
+            {% if request.user.Profile.profilePic %}
+			<img class="profile-pic" src="{{request.user.Profile.profilePic.url}}" alt="sorry">
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="">
+			
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+                <p>
+                    {{user_form.first_name.label}}
+                    {{user_form.first_name}}
+                </p>
+                <p>
+                    {{user_form.last_name.label}}
+                    {{user_form.last_name}}
+                </p>
+                <p>
+                    {{user_form.username.label}}
+                    {{user_form.username}}
+                </p>
+                <p>
+                    {{user_form.email.label}}
+                    {{user_form.email}}
+                </p>
+                <p>
+					<input type="file" id="id_profilePic">
+					<input type="text" name="hidden_image" style="display: none;", id='id_hidden_image'>
+					<a href="{% url 'removePic' %}" class="btn btn-outline-danger">Delete Photo</a>
+				</p>
+			
+			<input class="btn btn-primary" type="submit" name="Update Information" id='formSubmit'>
+			</form>
+			<a href="{% url 'logout' %}">logout</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/compress_imgs.js' %}"></script>
+{% endblock %}

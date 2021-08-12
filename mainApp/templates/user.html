@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    <h1>{{user}}</h1>
+    <p>{{user.message_set.count}}</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for form in formset %}
+            {{form}}
+            <hr>
+        {% endfor %}
+        <input type="submit" value="send">Send message</input>
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+    </form>
+</center>
+    
+{% endblock %}
+{% block scripts %}
+<script>
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
+{% endblock %}

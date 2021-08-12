@@ -1,0 +1,42 @@
+{% load static %}
+    <div class="navbar">
+        <a id="logo" href="{% url 'home' %}"><img class="logo-image" src="{% static 'images/logo.png' %}" alt=""></a>
+        <a id="tex" href="{% url 'home' %}"><h1><span>S</span>talker <span>R</span>at</h1></a>
+        <div class="search-bar">
+            <form action="{% url 'search' %}" method="POST" style="text-align: center;">
+                <span class="placeholder">Search</span>
+                <span class="spanx" role="button">
+                    <div class="ry"><div class="rz"></div></div>
+                </span>
+                <input id="Search" type="text" name="search_word">
+                {% csrf_token %}
+                <button id="bu-sub" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+        <div class="rit">
+            
+            {% if request.user.is_authenticated %}
+            <button class="profile">
+                <a href="{% url 'updateProfile' %}">
+                    <img class="profile-image" src="{{request.user.Profile.profilePic.url}}" alt="">
+                </a>
+            </button>
+            {% else %}
+            <div class="buttons">
+                {% if request.path != '/signup/' %}
+                <a href="{% url 'signUp' %}">
+                    <button class="sin">Sign Up</button>
+                </a>
+                {% endif %}
+                {% if request.path != '/login/' %}
+                <a href="{% url 'login' %}">
+                    <button class="log">Log In</button>
+                </a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="overlay"></div>

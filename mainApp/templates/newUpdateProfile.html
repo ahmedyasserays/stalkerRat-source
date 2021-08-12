@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css" />
+<link rel="stylesheet" href="{% static 'css/newUpdateProfile.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="info">
+        <div class="background">
+            <div class="wrapper">
+                <ul class="bg-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="prof-img">
+            <label class="edit-icon" >
+                <i class="far fa-edit"></i>
+            </label>
+            <!-- <input type="file" id="choseFile"> -->
+            <img src="{{request.user.Profile.profilePic.url}}" alt="" id='photo'>
+        </div>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="edit-boxs">
+            {{user_form.first_name}}
+            {{user_form.last_name}}
+            {{user_form.username}}
+            {{user_form.username.errors}}
+            {{user_form.email}}
+            <input type="text" name="hidden_image" style="display: none;", id='id_hidden_image'>
+            <!-- <a class="edit-password" href="https://google.com">Edit password?</a> -->
+        </div>
+        <div class="but-save">
+            <input type="submit" name="save-edit" id="supmit-input" value="Save">
+        </div>
+    </form>
+    <a href="{% url 'logout' %}">
+        <div id="logout">Log out</div>
+    </a>
+{% endblock %}
+{% block scripts %}
+<div class="crop-img">
+
+    <script>
+        UPLOADCARE_PUBLIC_KEY = "demopublickey";
+    </script>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+    <input type="hidden" role="uploadcare-uploader" data-crop="1:1" data-images-only>
+</div>
+<script src="{% static 'js/compress_imgs.js' %}"></script>
+{% endblock %}

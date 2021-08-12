@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home5.css' %}">
+<meta name="vapid-key" content="{{ vapid_key }}">
+<meta name="user_id" content="{{ request.user.id }}">
+{% endblock %}
+{% block content %}
+<div class="info">
+        <div class="background">
+            <div class="wrapper">
+                <ul class="bg-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="prof-img">
+            <img src="{{request.user.Profile.profilePic.url}}" alt="">
+        </div>
+    </div>
+    <div class="name-text">
+        <h1>
+            {{request.user.get_full_name}}
+        </h1>
+        <div class="num-m">
+            You currently have <span>{{request.user.Profile.message_set.count}} </span> {% if request.user.Profile.message_set.count == 1 %}Message{% else %} Messages{% endif %}
+        </div>
+        <div class="user-link">
+            <p>Share your link with your friends so they can send messages to you 😉</p>
+            <input id="userLink" type="text" value="{{userLink}}" readonly>
+            <button id="copyText">copy your link</button>
+        </div>
+    </div>
+    {% for message in user_messages %}
+    <div class="masseges">
+        <div class="masseges-box">
+            <div class="massege-contect">
+                <p dir="auto">{{message.content}}</p>
+            </div>
+            <span class="data-massege">{{message.date_sent}}</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+    {% block scripts %}
+        <script src="{% static 'js/home5.js' %}"></script>
+        <script src="{% static 'js/registerSW.js' %}"></script>
+    {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/search2.css' %}">
+{% endblock %}
+{% block content %}
+    {% if users %}
+        {% for user in users %}
+                <div class="result">
+                    <a href="{% url 'user' user.id %}">
+                        <div class="box">
+                            <div class="container">
+                                <div class="content">
+                                    <div class="img-box">
+                                        <img class="image" src="{{ user.Profile.profilePic.url }}" alt="">
+                                    </div>
+                                    <div class="name-box">
+                                        <h2 class="name">{{user.get_full_name}}</h2>
+                                    </div>
+                                    <div class="masseges">
+                                        <span>{{user.Profile.message_set.count}}</span><span>  {% if user.Profile.message_set.count == 1 %}Message{% else %} Messages{% endif %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+        {% endfor %}
+    {% else %}
+            <div class="no-result">
+                <img src="{% static 'images/noresult.png' %}" alt="">
+                <div class="text-noresult">
+                    <h1>No results</h1>
+                    <p>Make sure spelling is correct, try searching with name or username.</p>
+                </div>
+            </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Stalker Rat</title>
+   <link rel="stylesheet" href="{% static '/css/home2.css' %}">
+   <link rel="stylesheet" href="{% static '/css/normalize.css' %}">
+   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+
+<body>
+   <nav class="nav-bar">
+      <div class="search-icon">
+         <form action="{% url 'search' %}" method="POST">
+            {% csrf_token %}
+            <span class="textt">Search</span>
+            <input type="text" class="search-box" name="search_word">
+            <div class="spanx">
+               <div class="ay"><div class="az"></div></div>
+            </div>
+            <button type="submit">
+               <div class="si-container">
+                  <span class="circle"></span>
+                  <span class="handel"></span>
+               </div>
+            </button>
+         </form>
+      </div>
+   </nav>
+   <div class="heading">
+      <img src="{% static 'images/logo.png' %}" alt="black-box">
+      <h1><span>S</span>talker <span>R</span>at</h1>
+      
+   </div>
+   <p style="color:white; font-size:large;text-align:center">Join <span>{{users_counter}}</span> users and sign up</p>
+   <div class="buttons">
+      <div class="sign">
+         <a href="{% url 'signUp' %}"><button>Sign Up</button></a>
+      </div>
+      <div class="log">
+         <a href="{% url 'login' %}"><button>log In</button></a>
+      </div>
+   </div>
+   <div class="footer">
+      <p>Developed by MA</p>
+      <p><i class="far fa-copyright"></i> 2021</p>
+   </div>
+   <script src="{% static '/js/home2.js' %}"></script>
+</body>
+</html>
